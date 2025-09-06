@@ -8,6 +8,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import utils.WebDriverUtils;
 
 import java.io.File;
@@ -21,7 +22,12 @@ public class Hooks {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        // No headless mode
+        options.addArguments("--disable-gpu"); // Optional for Windows
+        options.addArguments("--no-sandbox"); // Optional for CI
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         utils = new WebDriverUtils(driver);
     }
 
