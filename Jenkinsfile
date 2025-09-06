@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven3'
+        maven 'Maven3.9.9'
         jdk 'JDK21'
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/manishsewlikar/SeleniumCucumberDemoPlayright.git'
+                git branch: 'master', url: 'https://github.com/manishsewlikar/SeleniumCucumberDemoPlayright.git'
             }
         }
         stage('Build') {
